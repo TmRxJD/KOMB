@@ -43,6 +43,7 @@ The macro will execute the brushing sequence based on the provided parameters. Y
 Enjoy the enhanced brushing capabilities provided by KOMB!
 
 <h3>Important Notes</h3>
+
 This macro is designed to work with a range of variables and parameters. Make sure to adjust them according to your printer's specifications and your brushing needs.
 
 Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at low speed.
