@@ -32,7 +32,7 @@ Then use either calipers to measure the size or use the UI again find to the siz
 
 Note: There's no need to set the size to larger than the brush if you want the strokes to go outside the brush, there's an offset option for this purpose, make sure to set the exact size of the brush to ensure the macro will work correctly.
 
-Then do the same thing with the Z position. take note of the height you want brushing to occur at. Note there is an option to lower the nozzle with each iteration so keep this in mind when deciding your z position. 
+Then do the same thing with the Z position. take note of the height you want brushing to occur at. Note there is an option to lower the nozzle with each iteration so keep this in mind when deciding your z position. Again, you can be specific up to 0.1mm, and same for the z_step size.
 
 Lower your nozzle into your brush until it gets to the maximum depth you want it to be able to get to, then subtract that from the Z position to get the size of the depth and then enter these values into the variables file.
 
