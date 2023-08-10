@@ -2,7 +2,8 @@
 
 Welcome to KOMB, the Klipper Optimized Macro for Brushing! This macro provides a versatile solution for controlling brushing sequences with various options, suitable for both bed and gantry mounted brushes.
 
-Features and Behavior
+<h3>Features and Behavior</h3>
+
 Customizable Movement: KOMB's default behavior is to move from left to right, but you can easily customize movement along different axes and directions. You can also choose to use the macro mid-print, depending on your printer's configuration and brush location.
 
 Brush Patterns: The macro currently supports one pattern: a diagonal sweep. This pattern can be extended to other patterns in the future.
