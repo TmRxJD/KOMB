@@ -26,15 +26,15 @@ Modify the variables defined in the _KOMB_Variables section to match your brushi
 
 Save the configuration file and reload the Klipper configuration to apply the changes.
 
-Use your printer's UI to carefully find the exact XY position of your brush, use the bottom left corner, you can specific up to 0.1mm. 
+Use your printer's UI to carefully find the exact XY position of your brush, use the bottom left corner, you can specific to 0.1mm. 
 
 Then use either calipers to measure the size or use the UI again find to the size by moving to the opposite corner on the upper right and then subtract the the lower left position from the upper right on x and y. 
 
 Note: There's no need to set the size to larger than the brush if you want the strokes to go outside the brush, there's an offset option for this purpose, make sure to set the exact size of the brush to ensure the macro will work correctly.
 
-Then do the same thing with the Z position. take note of the height you want brushing to occur at. Note there is an option to lower the nozzle with each iteration so keep this in mind when deciding your z position. Again, you can be specific up to 0.1mm, and same for the z_step size.
+Then do the same thing with the Z position. take note of the height you want brushing to occur at. Note there is an option to lower the nozzle with each iteration so keep this in mind when deciding your z position. Again, you can be specific to 0.1mm, and same for the z_step size.
 
-Lower your nozzle into your brush until it gets to the maximum depth you want it to be able to get to, then subtract that from the Z position to get the size of the depth and then enter these values into the variables file.
+Lower your nozzle into your brush until it gets to the maximum depth you want it to be able to get to, then subtract that from the Z position to get the size of the depth and then enter these values into the variables file. The step size defines the spacing between strokes and can be specific to 0.1mm.
 
 Use KOMB by executing it in the console, with a UI macro button, or simply add "KOMB" to your start print macro, preferably before your line purge, to brush before starting every print
 
