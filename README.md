@@ -1,4 +1,4 @@
-KOMB: The Klipper Optimized Macro for Brushing
+<h1>KOMB: The Klipper Optimized Macro for Brushing</h1>
 
 Welcome to KOMB, the Klipper Optimized Macro for Brushing! This macro provides a versatile solution for controlling brushing sequences with various options, suitable for both bed and gantry mounted brushes.
 
@@ -15,7 +15,8 @@ Verbose Output: Enable verbose console output to see detailed information about 
 
 What makes this macro truly unique is this macro is adaptable to work with all printers with different brush sizes and locations, and rather than forcing moves over the brush in the specific location of your printer, a list of all coordinates in the entire brushing sequence will be generated first, meaning points can be adjusted ahead of time to ensure they stay within limits, almost entirely removing the possibility the macro will error out. If any generated points are found to be outside the printer's limits they will be adjusted to be within. Once the list has been generated the macro simply runs the nozzle through the list of coordinates until complete. 
 
-How to Use KOMB
+<h2>How to Use KOMB</h2>
+
 Ensure you have Klipper firmware installed on your 3D printer.
 
 Copy the provided KOMB macro code into your Klipper configuration file where you keep your macros (usually printer.cfg).
@@ -40,7 +41,7 @@ The macro will execute the brushing sequence based on the provided parameters. Y
 
 Enjoy the enhanced brushing capabilities provided by KOMB!
 
-Important Notes
+<h3>Important Notes</h3>
 This macro is designed to work with a range of variables and parameters. Make sure to adjust them according to your printer's specifications and your brushing needs.
 
 Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at low speed.
