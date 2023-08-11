@@ -1,6 +1,6 @@
 <h1>KOMB: The Klipper Optimized Macro for Brushing</h1>
 
-Welcome to KOMB, the Klipper Optimized Macro for Brushing! This macro provides a versatile solution for controlling brushing sequences with various options, suitable for both bed and gantry mounted brushes.
+Welcome to KOMB, the Klipper Optimized Macro for Brushing! This macro provides a versatile solution for controlling brushing sequences with various options, suitable for both bed and gantry mounted brushes. No longer will you have to mess with finding and adapting someone else's macro to work with your printer, or having to create a macro of your own, and enjoy making more use of the full area of your brush by allowing brushing in 3 dimensions. 
 
 <h3>Features and Behavior</h3>
 
