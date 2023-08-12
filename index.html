@@ -2,6 +2,58 @@
 <html>
   <meta name="google-site-verification" content="Gk4K5r6e5trvno6rzumqoRhMmvvOBfclLOvfbIgamRM" />
 <body>
-<p>I'm hosted with GitHub Pages: tmrxjd.github.io </p>
+<h1>KOMB: Klipper's Ultimate Brushing Macro</h1>
+
+Welcome to KOMB, the Klipper Optimized Macro for Brushing! This versatile macro streamlines brushing sequences, tailor-made for both bed and gantry mounted brushes. Say goodbye to the hassle of adapting existing macros or creating new ones—now you can harness the full potential of your brush in three dimensions!
+
+<h3>Features and Functionality</h3>
+
+Flexible Movement: KOMB's default motion sweeps left to right, but you can effortlessly customize movement along various axes and directions. Use it mid-print depending on your printer and brush placement.
+
+Diverse Patterns: Currently supporting diagonal and circular sweeps (requires gcode_arcs enabled), KOMB's repertoire will soon expand to include more patterns.
+
+Adjustable Brush Parameters: Tweak variables for precise control, specify your brush location (X, Y, Z), the size in millimeters (X, Y, Z), step size (distance between diagonal or circular strokes), z-step to descend after each iteration, offset, repeat count, speed ramping, the ability to specify the angle of the diagonal, and more!
+
+Retraction and Temp Control: Configure retraction before, during, and after brushing. Temperature-based settings automatically preheat the nozzle before brushing and can even trigger automatic homing if needed.
+
+Verbose Feedback: Enable verbose console output for comprehensive insights into the brushing process, including axis values, calculations, and positioning points.
+
+<h3>KOMB's Distinctiveness</h3>
+
+KOMB is designed to seamlessly adapt to diverse printer setups, accommodating varying brush sizes and locations. Unlike traditional macros confined to specific printer locations, KOMB generates an entire sequence of coordinates, preemptively adjusted to stay within printer limits. This proactive approach nearly eliminates the risk of errors. Any generated points exceeding the printer's boundaries are automatically adjusted, ensuring smooth execution. Once the list is instantly generated, KOMB guides the nozzle through the predetermined coordinates with ease.
+
+<h3>Getting Started with KOMB</h3>
+
+Ensure Klipper firmware is installed on your 3D printer.
+
+Integrate the provided KOMB macro code into your Klipper configuration file (usually printer.cfg) or where your macros are stored.
+
+Specify variables in the _KOMB_Variables section to match your brushing requirements.
+
+Determine exact XY brush position via the printer's UI. Start from the bottom left corner, adjusting down to 0.1mm accuracy if you desire.
+
+Measure brush size or calculate it by moving to the upper right corner and subtracting the lower left position from the upper right on both X and Y axes.
+Repeat a similar process for the Z position, considering the option to lower the nozzle incrementally with each iteration (z_step).
+
+Save the configuration file and reload Klipper to apply changes.
+
+Execute KOMB in the console, via a UI macro button, or add "KOMB" to your start print macro. Ensure variables are configured accurately before execution.
+
+Monitor progress through the console output when verbose output is enabled.
+
+Enjoy Enhanced Brushing with KOMB!
+
+<h4>Important Notes</h4>
+
+This macro is designed to work with a range of variables and parameters. Make sure to adjust them according to your printer's specifications and your brushing needs.
+
+Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at low speed.
+
+Be sure to check back in the future for updates and more patterns!
+
+KOMB is a work in progress, and not all variable combinations have been thoroughly tested. Your feedback and contributions to improve the macro are highly appreciated.
+
+If you encounter any issues, have suggestions for improvements, or wish to contribute to the development of KOMB, please feel free to open an issue or submit a pull request on the GitHub repository.
+
 </body>
 </html>
