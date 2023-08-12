@@ -6,19 +6,32 @@ Welcome to KOMB, the Klipper Optimized Macro for Brushing! This versatile macro 
 
 <h3>Features and Functionality</h3>
 
-Flexible Movement: KOMB's default motion sweeps left to right, but you can effortlessly customize movement along various axes and directions. Use it mid-print depending on your printer and brush placement.
+Flexible Movement: KOMB's default motion sweeps from bottom left corner to right, but you can effortlessly customize movement along various axes and directions. Even use it mid-print depending on your printer and brush placement.
 
-Diverse Patterns: Currently supporting diagonal and circular sweeps (requires gcode_arcs enabled), KOMB's repertoire will soon expand to include more patterns.
+Diverse Patterns: Currently supports diagonal and circular sweeps (requires gcode_arcs enabled), KOMB's repertoire will soon expand to include more patterns.
 
-Adjustable Brush Parameters: Tweak variables for precise control, specify your brush location (X, Y, Z), the size in millimeters (X, Y, Z), step size (distance between diagonal or circular strokes), z-step to descend after each iteration, offset, repeat count, speed ramping, the ability to specify the angle of the diagonal, and more!
+3 Dimensional Brushing: Take advantage of the entire area and depth possible of your brush to ensure a cleaner nozzle with more consistent performance, you can be rest assured your nozzle will be clean every time. Nozzle can lower into the brush step by step to allow more nozzle surface area to reach the brush.
 
-Retraction and Temp Control: Configure retraction before, during, and after brushing. Temperature-based settings automatically preheat the nozzle before brushing and can even trigger automatic homing if needed.
-
-Verbose Feedback: Enable verbose console output for comprehensive insights into the brushing process, including axis values, calculations, and positioning points.
+<h4>Adjustable Brush Parameters: Tweak variables for precise control</h4>
+* Specify your brush location in (X, Y, Z), as well as the size and depth in millimeters <br>
+* Step size: Distance between diagonal or circular strokes <br>
+* Z-step: Descend after each iteration when using repeat. Set to 0 to disable. <br>
+* Offset: Allows you to start and end movements outside the bounds of the brush, or to stay more confined within use a negative value for this <br>
+* Repeat count: Specify how many times you want the pattern to iterate <br>
+* Reverse: Enable to repeat the pattern back to the start in reverse before next repetition. If disabled nozzle will travel straight back to start after pattern <br>
+* Start on Opposite and/or Adjacent side: If opposite side is enabled, nozzle will move from right to left. If adjacent is enabled, nozzle will move along the opposite axis and start on the bottom moving up. If both opposite and adjacent are enabled, nozzle will move from top to bottom. <br>
+* Variable Speed: Specify speed in mm/s and increase or decrease the speed with each repitition. Also can control travel speed to brush <br>
+* Patterns: Pick between different brushing patters, currently diagonals and circles are supported. (If you still wish to use a classic horizontal pattern you can, just set the brush size on the opposite axis to 0. If you still want it to be able to step set the angle to 0) <br>
+* Angle: specify the angle of the diagonal strokes when using pattern 1, default recommended angle is 45 <br>
+* Auto Heat: Enable and specify a minimum temperature to allow brushing at and automatically preheat to this temp before brushing <br>
+* Auto Home: Automatically home printhead if needed. Will only home if not already. <br>
+* Retraction: Configure retraction before, during, and after brushing. <br>
+* Z Hop: Specify a height to raise nozzle to before moving to brush location and then lowering. Set to 0 to disable.
+* Verbose Feedback: Enable verbose console output for comprehensive insights into the brushing process, including axis values, calculations, and positioning points. <br>
 
 <h3>KOMB's Distinctiveness</h3>
 
-KOMB is designed to seamlessly adapt to diverse printer setups, accommodating varying brush sizes and locations. Unlike traditional macros confined to specific printer locations, KOMB generates an entire sequence of coordinates, preemptively adjusted to stay within printer limits. This proactive approach nearly eliminates the risk of errors. Any generated points exceeding the printer's boundaries are automatically adjusted, ensuring smooth execution. Once the list is instantly generated, KOMB guides the nozzle through the predetermined coordinates with ease.
+KOMB is designed to seamlessly adapt to diverse printer setups, accommodating varying brush sizes and locations. Unlike traditional macros which brute-force your nozzle to move to specific locations, KOMB generates an entire sequence of coordinates based on your variables, preemptively adjusted to stay within printer limits. This proactive approach nearly eliminates the risk of errors to ensure successful brushing regardless of user error. Any generated points exceeding the printer's boundaries are automatically adjusted to be within, ensuring smooth execution. Once the list is instantly generated, KOMB guides the nozzle through the predetermined coordinates with ease.
 
 <h3>Getting Started with KOMB</h3>
 
@@ -43,12 +56,14 @@ Enjoy Enhanced Brushing with KOMB!
 
 <h4>Important Notes</h4>
 
-This macro is designed to work with a range of variables and parameters. Make sure to adjust them according to your printer's specifications and your brushing needs.
+This macro is designed to work with a range of variables and parameters. Make sure to adjust them according to your printer's specifications and your brushing needs. Make sure you understand what each variable does and how to use it.
 
-Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at low speed.
+Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at a low speed above the brush before lowering it into position.
 
 Be sure to check back in the future for updates and more patterns!
 
 KOMB is a work in progress, and not all variable combinations have been thoroughly tested. Your feedback and contributions to improve the macro are highly appreciated.
 
-If you encounter any issues, have suggestions for improvements, or wish to contribute to the development of KOMB, please feel free to open an issue or submit a pull request on the GitHub repository.
+If you encounter any issues, have suggestions for improvements, or wish to contribute to the development of KOMB, please feel free to message me, open an issue or submit a pull request on the GitHub repository. 
+
+Happy KOMBing!
