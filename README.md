@@ -46,6 +46,8 @@ This macro is designed to work with a range of variables and parameters. Make su
 
 Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at low speed.
 
+Be sure to check back in the future for updates and more patterns!
+
 KOMB is a work in progress, and not all variable combinations have been thoroughly tested. Your feedback and contributions to improve the macro are highly appreciated.
 
 If you encounter any issues, have suggestions for improvements, or wish to contribute to the development of KOMB, please feel free to open an issue or submit a pull request on the GitHub repository.
