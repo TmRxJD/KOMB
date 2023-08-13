@@ -27,6 +27,7 @@ Diverse Patterns: Currently supports diagonal and circular sweeps (requires gcod
 * Auto Home: Automatically home printhead if needed. Will only home if not already. <br>
 * Retraction: Configure retraction before, during, and after brushing. <br>
 * Z Hop: Specify a height to raise nozzle to before moving to brush location and then lowering. Set to 0 to disable.
+* Trigger: Add "KOMB_trigger" to your 'at layer change' section of your slicer to automatically trigger the macro at the specified frequency.
 * Verbose Feedback: Enable verbose console output for comprehensive insights into the brushing process, including axis values, calculations, and positioning points. <br>
 
 <h3>KOMB's Distinctiveness</h3>
