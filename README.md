@@ -33,7 +33,7 @@ Use it Mid Print: with KOMB trigger you can use the macro as often as you like o
 
 <h4>KOMB Trigger</h4>
 
-Use can use KOMB at a specified frequency throughout the print to ensure your nozzle stays clean for the entire duration. Include "KOMB_trigger" in the 'at layer change' section of your slicer configuration to effortlessly trigger the macro at your preferred frequency. Additionally, integrate this macro name into your start print routine to use the macro before starting printing. This feature is not intended for per-object printing and is tailored for use with gantry and frame-mounted brushes. While functional with bed-mounted brushes, cautious use is advised, as attention to your printer's clearances is essential to prevent potential collisions. If utilizing Z hop, the nozzle will ascend before maneuvering over the brush, descend for brushing, and subsequently reascend to its initial height before resuming printing. Configure Z hop settings to provide added clearance during elevation and descent. It is strongly recommended not to set the Z hop value below 2. Additionally, ensure that your axis limits are accurately defined for the macro's effective operation. For guidance on setting axis limits, refer to the guide provided at the end of this readme.
+You can use KOMB at a specified frequency throughout the print to ensure your nozzle stays clean for the entire duration. Include "_KOMB_trigger" in the 'at layer change' section of your slicer configuration to effortlessly trigger the macro at your preferred frequency. Additionally, integrate this macro name into your start print routine to use the macro before starting printing. This feature is not intended for per-object printing and is tailored for use with gantry and frame-mounted brushes. While functional with bed-mounted brushes, cautious use is advised, as attention to your printer's clearances is essential to prevent potential collisions. If utilizing Z hop, the nozzle will ascend before maneuvering over the brush, descend for brushing, and subsequently reascend to its initial height before resuming printing. Configure Z hop settings to provide added clearance during elevation and descent. It is strongly recommended not to set the Z hop value below 2. Additionally, ensure that your axis limits are accurately defined for the macro's effective operation. For guidance on setting axis limits, refer to the guide provided at the end of this readme.
 
 <h3>KOMB's Distinctiveness</h3>
 
@@ -43,9 +43,9 @@ KOMB is designed to seamlessly adapt to diverse printer setups, accommodating va
 
 Ensure Klipper firmware is installed on your 3D printer.
 
-Integrate the provided KOMB macro code into your Klipper configuration file (usually printer.cfg) or where your macros are stored.
+Integrate the supplied KOMB macro code, "KOMB.cfg", into your Klipper configuration file "printer.cfg", alongside your other macros. To enhance user-friendliness, it's recommended to maintain the KOMB Variables in a separate file and include it using "[include _KOMB_Variables.cfg]." Alternatively, you can merge it with the main configuration if you find that more convenient.
 
-Specify variables in the _KOMB_Variables section to match your brushing requirements.
+Specify variables in the KOMB_Variables section to match your brushing requirements.
 
 Determine exact XY brush position via the printer's UI. Start from the bottom left corner, adjusting down to 0.1mm accuracy if you desire.
 
