@@ -12,7 +12,9 @@ Diverse Patterns: Currently supports diagonal and circular sweeps (requires gcod
 
 3 Dimensional Brushing: Take advantage of the entire area and depth possible of your brush to ensure a cleaner nozzle with more consistent performance, you can be rest assured your nozzle will be clean every time. Nozzle can lower into the brush step by step to allow more nozzle surface area to reach the brush.
 
-<h4>Adjustable Brush Parameters: Tweak variables for precise control</h4>
+Use it Mid Print: with KOMB trigger you can use the macro as often as you like over the course of your print, ensuring your nozzle stays clean for the entire duration.
+
+<h3>Adjustable Brush Parameters: Tweak variables for precise control</h3>
 * Specify your brush location in (X, Y, Z), as well as the size and depth in millimeters <br>
 * Step size: Distance between diagonal or circular strokes <br>
 * Z-step: Descend after each iteration when using repeat. Set to 0 to disable. <br>
@@ -27,8 +29,11 @@ Diverse Patterns: Currently supports diagonal and circular sweeps (requires gcod
 * Auto Home: Automatically home printhead if needed. Will only home if not already. <br>
 * Retraction: Configure retraction before, during, and after brushing. <br>
 * Z Hop: Specify a height to raise nozzle to before moving to brush location and then lowering. Set to 0 to disable.<br>
-* Trigger: Add "KOMB_trigger" to your 'at layer change' section of your slicer to automatically trigger the macro at the specified frequency.<br>
 * Verbose Feedback: Enable verbose console output for comprehensive insights into the brushing process, including axis values, calculations, and positioning points. <br>
+
+<h4>KOMB Trigger</h4>
+
+Use can use KOMB at a specified frequency throughout the print to ensure your nozzle stays clean for the entire duration. Include "KOMB_trigger" in the 'at layer change' section of your slicer configuration to effortlessly trigger the macro at your preferred frequency. Additionally, integrate this macro name into your start print routine to use the macro before starting printing. This feature is not intended for per-object printing and is tailored for use with gantry and frame-mounted brushes. While functional with bed-mounted brushes, cautious use is advised, as attention to your printer's clearances is essential to prevent potential collisions. If utilizing Z hop, the nozzle will ascend before maneuvering over the brush, descend for brushing, and subsequently reascend to its initial height before resuming printing. Configure Z hop settings to provide added clearance during elevation and descent. It is strongly recommended not to set the Z hop value below 2. Additionally, ensure that your axis limits are accurately defined for the macro's effective operation. For guidance on setting axis limits, refer to the guide provided at the end of this readme.
 
 <h3>KOMB's Distinctiveness</h3>
 
@@ -55,9 +60,11 @@ Monitor progress through the console output when verbose output is enabled.
 
 Enjoy Enhanced Brushing with KOMB!
 
-<h4>Important Notes</h4>
+<h3>Important Notes</h3>
 
 This macro is designed to work with a range of variables and parameters. Make sure to adjust them according to your printer's specifications and your brushing needs. Make sure you understand what each variable does and how to use it.
+
+You must ensure that your axis limits are set properly in order for this macro to function correctly. Follow this guide if you are unsure: https://github.com/rootiest/zippy_guides/blob/main/guides/axis_limits.md
 
 Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at a low speed above the brush before lowering it into position.
 
