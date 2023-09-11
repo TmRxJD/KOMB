@@ -1,0 +1,18 @@
+[gcode_macro _KOMB_trigger]
+variable_next_trigger: 0
+description: add this macro to your slicer to enable frequency triggering.
+gcode:
+    SAVE_GCODE_STATE NAME=komb_trigger
+    {% set height = printer.toolhead.position.z %} 
+    {% set trigger_freq = printer["gcode_macro _KOMB_Variables"].trigger_freq %}
+
+    {% if next_trigger is not defined %}
+        {% set next_trigger = trigger_freq %}
+    {% endif %}
+ 
+    {% if height == next_trigger or height <= 1 %}
+        SET_GCODE_VARIABLE MACRO=_KOMB_trigger VARIABLE=next_trigger VALUE={ next_trigger + trigger_freq }
+        KOMB
+    {% endif %}
+
+    RESTORE_GCODE_STATE NAME=komb_trigger
