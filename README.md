@@ -1,8 +1,41 @@
 <head><meta name="google-site-verification" content="YTr2AYTpsxIQk7KIOlVTOfKr11dqkzZP-gOUiyhPU5s" />
 <body>
+
 <h1>KOMB: Klipper's Ultimate Brushing Macro</h1>
 
 Welcome to KOMB, the Klipper Optimized Macro for Brushing! This versatile macro streamlines brushing sequences, tailor-made for both bed and gantry mounted brushes. Say goodbye to the hassle of adapting existing macros or creating new ones—now you can harness the full potential of your brush in three dimensions!
+
+<h3> Installation: </h3>
+
+The cleanest and easiest way to get started with KAMP is to use Moonraker's Update Manager utility. This will allow you to easily install and helps to provide future updates when more features are rolled out!
+
+1. `ssh` into your Klipper device and execute the following commands:
+   ```bash
+    cd
+    
+    git clone https://github.com/TmRxJD/KOMB    
+
+    ln -s ~/KOMB printer_data/config/KOMB
+
+    cp ~/KOMB/_KOMB_Variables.cfg ~/printer_data/config/KOMB_Variables.cfg
+
+    ```
+
+2. Open your `moonraker.conf` file and add this configuration:
+   ```yaml
+   [update_manager KOMB]
+   type: git_repo
+   channel: dev
+   path: ~/KOMB
+   origin: https://github.com/TmRxJD/KOMB
+   managed_services: klipper
+   primary_branch: main
+    ```
+
+    > **Note:**
+    > Whenever Moonraker configurations are changed, it must be restarted for changes to take effect. If you do not want moonraker to notify you of future updates to KAMP, feel free to skip this.
+
+3. Optionally, include KOMB_Purge.cfg in your KOMB_Variables.cfg to use the macro there. 
 
 <h3>Features and Functionality</h3>
 
