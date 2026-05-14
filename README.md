@@ -1,3 +1,35 @@
+
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=TmRxJD&project=KOMB&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div>
+
 <head><meta name="google-site-verification" content="YTr2AYTpsxIQk7KIOlVTOfKr11dqkzZP-gOUiyhPU5s" />
 <body>
 
