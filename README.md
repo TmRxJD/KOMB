@@ -7,7 +7,7 @@ Welcome to KOMB, the Klipper Optimized Macro for Brushing! This versatile macro 
 
 <h3> Installation: </h3>
 
-The cleanest and easiest way to get started with KAMP is to use Moonraker's Update Manager utility. This will allow you to easily install and helps to provide future updates when more features are rolled out!
+The cleanest and easiest way to get started with KOMB is to use Moonraker's Update Manager utility. This will allow you to easily install and helps to provide future updates when more features are rolled out!
 
 1. `ssh` into your Klipper device and execute the following commands:
    ```bash
