@@ -180,6 +180,25 @@ brush measured on one axis only.
 
 ---
 
+## Testing
+
+KOMB has two test suites, neither of which needs a printer. Please run them before opening a pull
+request — see [`tests/README.md`](tests/README.md) for setup.
+
+```bash
+python tests/render_test.py     # fast: renders the macros, checks the G-code
+python3 tests/klipper_sweep.py  # thorough: runs real Klipper on a simulated printer
+```
+
+The second one drives ~360 setting combinations through Klipper's actual config parser, Jinja
+environment, motion planner and arc module, and checks what the motion system *did* — that the
+toolhead returned to where it started, that the extruder axis moved backwards when retracting, and
+that no move or arc left the travel volume.
+
+Neither suite knows anything physical: there is no model of your brush, mount or frame, and no
+collision detection. Always dry-run in the air on real hardware before letting the nozzle touch
+the brush.
+
 ## Contributing
 
 Issues and pull requests are welcome. KOMB has a lot of settings and not every combination has been
