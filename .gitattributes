@@ -1,0 +1,3 @@
+# Klipper reads these on a Linux host - always check them out with LF,
+# regardless of the platform they were edited on.
+* text=auto eol=lf

@@ -1,114 +1,201 @@
-<head><meta name="google-site-verification" content="YTr2AYTpsxIQk7KIOlVTOfKr11dqkzZP-gOUiyhPU5s" />
-<body>
+# KOMB — Klipper Optimized Macro for Brushing
 
-<h1>KOMB: Klipper's Ultimate Brushing Macro</h1>
+A flexible nozzle-brushing macro for Klipper. It works with bed-mounted, gantry-mounted and
+frame-mounted brushes, sweeps in three dimensions, and generates the whole tool path up front so
+every move is checked against your printer's travel limits before anything starts moving.
 
-Welcome to KOMB, the Klipper Optimized Macro for Brushing! This versatile macro streamlines brushing sequences, tailor-made for both bed and gantry mounted brushes. Say goodbye to the hassle of adapting existing macros or creating new ones—now you can harness the full potential of your brush in three dimensions!
+> ⚠️ **Read this first.** KOMB drives your nozzle around near your bed and brush. Measure carefully,
+> dry-run in the air before letting the nozzle touch anything, and make sure `position_min` /
+> `position_max` are set correctly for every axis. See
+> [rootiest's axis limits guide](https://github.com/rootiest/zippy_guides/blob/main/guides/axis_limits.md)
+> if you are not sure.
 
-<h3> Installation: </h3>
+---
 
-The cleanest and easiest way to get started with KAMP is to use Moonraker's Update Manager utility. This will allow you to easily install and helps to provide future updates when more features are rolled out!
+## Installation
 
-1. `ssh` into your Klipper device and execute the following commands:
-   ```bash
-    cd
-    
-    git clone https://github.com/TmRxJD/KOMB    
+The easiest way to install is with Moonraker's Update Manager, so you get future updates
+automatically.
 
-    ln -s ~/KOMB printer_data/config/KOMB
+### 1. Clone the repo onto your Klipper host
 
-    cp ~/KOMB/_KOMB_Variables.cfg ~/printer_data/config/KOMB_Variables.cfg
+SSH into your printer and run:
 
-    ```
+```bash
+cd ~
+git clone https://github.com/TmRxJD/KOMB
+ln -s ~/KOMB ~/printer_data/config/KOMB
+cp ~/KOMB/_KOMB_Variables.cfg ~/printer_data/config/KOMB_Variables.cfg
+```
 
-2. Open your `moonraker.conf` file and add this configuration:
-   ```yaml
-   [update_manager KOMB]
-   type: git_repo
-   channel: dev
-   path: ~/KOMB
-   origin: https://github.com/TmRxJD/KOMB
-   managed_services: klipper
-   primary_branch: main
-    ```
+The symlink lets Klipper read the macros. The copy is *your* settings file — it lives outside the
+repo so updates never overwrite it.
 
-    > **Note:**
-    > Whenever Moonraker configurations are changed, it must be restarted for changes to take effect. If you do not want moonraker to notify you of future updates to KAMP, feel free to skip this.
+### 2. Include your settings file from `printer.cfg`
 
-3. Optionally, include KOMB_Purge.cfg in your KOMB_Variables.cfg to use the macro there. 
+Add this line to `~/printer_data/config/printer.cfg`:
 
-<h3>Features and Functionality</h3>
+```ini
+[include KOMB_Variables.cfg]
+```
 
-Flexible Movement: KOMB's default motion sweeps from bottom left corner to right, but you can effortlessly customize movement along various axes and directions. Even use it mid-print depending on your printer and brush placement.
+That single include pulls in everything: `KOMB_Variables.cfg` loads `KOMB.cfg`, which in turn loads
+`KOMB_Purge.cfg` and `KOMB_Trigger.cfg`.
 
-Diverse Patterns: Currently supports diagonal and circular sweeps (requires gcode_arcs enabled), KOMB's repertoire will soon expand to include more patterns.
+### 3. (Optional) Enable Moonraker updates
 
-3 Dimensional Brushing: Take advantage of the entire area and depth possible of your brush to ensure a cleaner nozzle with more consistent performance, you can be rest assured your nozzle will be clean every time. Nozzle can lower into the brush step by step to allow more nozzle surface area to reach the brush.
+Add to `~/printer_data/config/moonraker.conf`:
 
-Use it Mid Print: with KOMB trigger you can use the macro as often as you like over the course of your print, ensuring your nozzle stays clean for the entire duration.
+```ini
+[update_manager KOMB]
+type: git_repo
+path: ~/KOMB
+origin: https://github.com/TmRxJD/KOMB
+primary_branch: main
+managed_services: klipper
+```
 
-<h3>Adjustable Brush Parameters: Tweak variables for precise control</h3>
-* Specify your brush location in (X, Y, Z), as well as the size and depth in millimeters <br>
-* Step size: Distance between diagonal or circular strokes <br>
-* Z-step: Descend after each iteration when using repeat. Set to 0 to disable. <br>
-* Offset: Allows you to start and end movements outside the bounds of the brush, or to stay more confined within use a negative value for this <br>
-* Repeat count: Specify how many times you want the pattern to iterate <br>
-* Reverse: Enable to repeat the pattern back to the start in reverse before next repetition. If disabled nozzle will travel straight back to start after pattern <br>
-* Start on Opposite and/or Adjacent side: If opposite side is enabled, nozzle will move from right to left. If adjacent is enabled, nozzle will move along the opposite axis and start on the bottom moving up. If both opposite and adjacent are enabled, nozzle will move from top to bottom. <br>
-* Variable Speed: Specify speed in mm/s and increase or decrease the speed with each repitition. Also can control travel speed to brush <br>
-* Patterns: Pick between different brushing patters, currently diagonals and circles are supported. (If you still wish to use a classic horizontal pattern you can, just set the brush size on the opposite axis to 0. If you still want it to be able to step set the angle to 0) <br>
-* Angle: specify the angle of the diagonal strokes when using pattern 1, default recommended angle is 45 <br>
-* Auto Heat: Enable and specify a minimum temperature to allow brushing at and automatically preheat to this temp before brushing <br>
-* Auto Home: Automatically home printhead if needed. Will only home if not already. <br>
-* Retraction: Configure retraction before, during, and after brushing. <br>
-* Z Hop: Specify a height to raise nozzle to before moving to brush location and then lowering. Set to 0 to disable.<br>
-* Verbose Feedback: Enable verbose console output for comprehensive insights into the brushing process, including axis values, calculations, and positioning points. <br>
+Restart Moonraker for this to take effect.
 
-<h4>KOMB Trigger</h4>
+### 4. (Optional) Enable arc support
 
-You can use KOMB at a specified frequency throughout the print to ensure your nozzle stays clean for the entire duration. Include `KOMB_trigger` in the 'at layer change' section of your slicer configuration to effortlessly trigger the macro at your preferred frequency. Additionally, integrate this macro name into your start print routine to use the macro before starting printing. This feature is not intended for per-object printing and is tailored for use with gantry and frame-mounted brushes. While functional with bed-mounted brushes, cautious use is advised, as attention to your printer's clearances is essential to prevent potential collisions. If utilizing Z hop, the nozzle will ascend before maneuvering over the brush, descend for brushing, and subsequently reascend to its initial height before resuming printing. Configure Z hop settings to provide added clearance during elevation and descent. It is strongly recommended not to set the Z hop value below 2. Additionally, ensure that your axis limits are accurately defined for the macro's effective operation. For guidance on setting axis limits, refer to the guide provided at the end of this readme.
+Pattern 2 (circles) needs arc moves. Add to `printer.cfg` if you don't have it already:
 
-<h4>KOMB Purge</h4>
+```ini
+[gcode_arcs]
+resolution: 0.1
+```
 
-KOMB's purging option empowers you with the ability to initiate a controlled material purge before engaging in the brushing sequence. This feature proves especially beneficial when precision matters, such as during Z-offset calibration or other measurement-dependent operations, without the need to draw an extra purge line. By utilizing this feature, you can easily define the location for your purge container, the desired filament extrusion amount, and the wait time before transitioning to the brushing sequence. The purging option can also be activated independently of the rest of the macro; this provides you with the flexibility to tailor your printing process according to your specific requirements. To use the macro in your start print add "KOMB_purge" to your config.
+### 5. Configure and restart
 
-<h3>KOMB's Distinctiveness</h3>
+Edit `KOMB_Variables.cfg` to match your brush (see [Measuring your brush](#measuring-your-brush)),
+then `FIRMWARE_RESTART`.
 
-KOMB is designed to seamlessly adapt to diverse printer setups, accommodating varying brush sizes and locations. Unlike traditional macros which brute-force your nozzle to move to specific locations, KOMB generates an entire sequence of coordinates based on your variables, preemptively adjusted to stay within printer limits. This proactive approach nearly eliminates the risk of errors to ensure successful brushing regardless of user error. Any generated points exceeding the printer's boundaries are automatically adjusted to be within, ensuring smooth execution. Once the list is instantly generated, KOMB guides the nozzle through the predetermined coordinates with ease.
+---
 
-<h3>Getting Started with KOMB</h3>
+## Usage
 
-Ensure Klipper firmware is installed on your 3D printer.
+| Macro | What it does |
+|---|---|
+| `KOMB` | Run a brushing sequence. |
+| `KOMB_PURGE` | Purge filament into your purge bucket. |
+| `KOMB_TRIGGER` | Layer-change hook — runs `KOMB` every `trigger_freq` mm of height. |
+| `KOMB_TRIGGER_RESET` | Resets the trigger height counter. Call from `PRINT_START`. |
 
-Integrate the supplied KOMB macro code, `KOMB.cfg`, into your Klipper configuration file "printer.cfg", alongside your other macros. To enhance user-friendliness, it's recommended to maintain the KOMB Variables in a separate file and include it using `[include _KOMB_Variables.cfg].` Alternatively, you can merge it with the main configuration if you find that more convenient.
+Run `KOMB` from the console, from a UI macro button, or from your `PRINT_START` macro.
 
-Specify variables in the KOMB_Variables section to match your brushing requirements.
+Every setting can be overridden for a single call without editing the config:
 
-Determine exact XY brush position via the printer's UI. Start from the bottom left corner, adjusting down to 0.1mm accuracy if you desire.
+```gcode
+KOMB REPEAT=3 SPEED=80 PATTERN=2
+```
 
-Measure brush size or calculate it by moving to the upper right corner and subtracting the lower left position from the upper right on both X and Y axes.
-Repeat a similar process for the Z position, considering the option to lower the nozzle incrementally with each iteration (z_step).
+### Measuring your brush
 
-Save the configuration file and reload Klipper to apply changes.
+1. Home the printer, then jog the nozzle to the **bottom-left corner** of the brush. Those X/Y
+   readings are `brush_location_x` and `brush_location_y`.
+2. Jog to the **top-right corner**. Subtract the first reading from the second to get
+   `brush_size_x` and `brush_size_y`.
+3. Jog down until the nozzle just touches the top of the bristles. That Z reading is
+   `brush_location_z`.
+4. `brush_size_z` is how much *further* down the nozzle may sink into the bristles. Start at 1–2 mm.
 
-Execute KOMB in the console, via a UI macro button, or add `KOMB` to your start print macro. Ensure variables are configured accurately before execution.
+Set `brush_location_z` a few millimetres high and run `KOMB` once to watch the path in the air
+before you let it touch the brush.
 
-Monitor progress through the console output when verbose output is enabled.
+A location of `0` means "use wherever the nozzle already is on that axis" — useful for gantry-mounted
+brushes where only one axis matters. The printer must already be homed for that to work.
 
-Enjoy Enhanced Brushing with KOMB!
+---
 
-<h3>Important Notes</h3>
+## Features
 
-This macro is designed to work with a range of variables and parameters. Make sure to adjust them according to your printer's specifications and your brushing needs. Make sure you understand what each variable does and how to use it.
+**Flexible movement.** By default KOMB sweeps along X starting from the bottom-left corner. Set
+`start_adjacent_side` to sweep along Y instead, and `start_opposite_side` to start at the far end
+and sweep back. The two combine, so all four directions are available.
 
-You must ensure that your axis limits are set properly in order for this macro to function correctly. Follow this guide if you are unsure: https://github.com/rootiest/zippy_guides/blob/main/guides/axis_limits.md
+**Two patterns.**
 
-Since this macro involves moving the printer's nozzle, exercise caution to avoid any collisions during the brushing process and ensure all values are correct. It is recommended to test the macro at a low speed above the brush before lowering it into position.
+- **Pattern 1 — diagonals.** A zig-zag that crosses the full depth of the brush on every stroke.
+  `angle` sets how slanted each stroke is, which in turn sets how far one crossing travels along
+  the brush: at 45° a crossing advances by exactly the brush depth, steeper angles advance less and
+  scrub more densely, and `0` gives a plain straight-line wipe with no crossing at all. `step` is
+  the minimum advance, so a steep angle on a deep brush still makes progress.
+- **Pattern 2 — circles.** Walks along the travel axis scribing a full circle at every step. The
+  circle radius is half the brush's short side, so it always fits. Requires `[gcode_arcs]`.
 
-Be sure to check back in the future for updates and more patterns!
+**Three-dimensional brushing.** With `repeat` and `z_step`, the nozzle descends a little after each
+pass, so more of the nozzle's surface reaches the bristles instead of only the very tip. It never
+goes below `brush_location_z - brush_size_z`.
 
-KOMB is a work in progress, and not all variable combinations have been thoroughly tested. Your feedback and contributions to improve the macro are highly appreciated.
+**Mid-print brushing.** `KOMB_TRIGGER` runs KOMB every `trigger_freq` mm of print height. Add it to
+your slicer's *after layer change* custom G-code and add `KOMB_TRIGGER_RESET` to `PRINT_START`.
+`return_to_start` must be enabled or the toolhead will not come back to the print.
 
-If you encounter any issues, have suggestions for improvements, or wish to contribute to the development of KOMB, please feel free to message me, open an issue or submit a pull request on the GitHub repository. 
+Triggering is not suitable for per-object printing, and needs care with bed-mounted brushes on
+bed-slingers — check your clearances. Z-hop applies to the moves to and from the brush, so give
+yourself room with `z_hop_height` (2 mm minimum is strongly recommended).
+
+**Purging.** `KOMB_PURGE` extrudes a measured amount into a purge bucket. Useful before Z-offset
+probing or any measurement where a clean, ooze-free nozzle matters, without wasting a whole purge
+line. Set `purge_amount` above 0 and KOMB will purge before it brushes; or call `KOMB_PURGE` on its
+own. Flow rate is set volumetrically in mm³/s and converted using `filament_diameter`.
+
+**Retraction control.** PETG in particular loves to dribble, so retraction is configurable before,
+during and after the sequence. Retraction is only applied when the nozzle is actually hot enough
+to move filament.
+
+**Safety by construction.** All coordinates are computed and clamped to your configured axis limits
+*before* any motion is commanded, and clamped again on the way out. A mis-measured brush produces a
+short or oddly-shaped wipe, not an out-of-range error or a crash into a frame member. Settings that
+cannot work (zero brush on both axes, circles on a single-axis brush, an out-of-range angle) are
+rejected up front with an explanatory message rather than failing mid-move.
+
+**Verbose feedback.** `verbose_enable` prints a summary of what was calculated. `verbose_points`
+prints every generated move — very noisy, for debugging only.
+
+Full descriptions of every setting are in the comments in
+[`_KOMB_Variables.cfg`](_KOMB_Variables.cfg).
+
+---
+
+## Troubleshooting
+
+**"printer must be homed first"** — Home the printer, or set `auto_home_enable: True`.
+
+**"a brush_location of 0 means 'use the current position'…"** — Klipper renders the whole macro
+before it runs any of it, so a `G28` issued by KOMB cannot tell KOMB where the nozzle ended up.
+Home first, or give explicit coordinates.
+
+**"nozzle is below N C"** — Either set `clean_while_cold: True`, or set `auto_heat_nozzle: True` so
+KOMB heats up for you.
+
+**"pattern 2 needs a non-zero brush size on BOTH axes"** — Circles need area. Use pattern 1 for a
+brush measured on one axis only.
+
+**Circles do nothing / arc errors** — Add `[gcode_arcs]` to `printer.cfg`.
+
+**The wipe is shorter than the brush** — Your brush probably extends past a `position_min` /
+`position_max` limit and got clamped. Turn on `verbose_enable` to see the clamped bounds.
+
+---
+
+## Contributing
+
+Issues and pull requests are welcome. KOMB has a lot of settings and not every combination has been
+exercised on real hardware — if you find one that misbehaves, please open an issue with your
+`_KOMB_Variables.cfg` and the verbose console output.
+
+## License
+
+KOMB is free software, licensed under the **GNU General Public License v3.0 or later**. You are free
+to use, study, modify and redistribute it, including in forks, provided derivative works are
+released under the same license. See [LICENSE](LICENSE) for the full text.
+
+Copyright © 2024 TmRxJD
+
+## Support
+
+If KOMB saved you some nozzle-wiping misery, you can [buy me a Ko-fi](https://ko-fi.com/tmrxjd).
 
 Happy KOMBing!
